@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'dotenv/load'
+require 'faraday'
+require 'pry'
+require 'awesome_print'
+
+shop = ENV['SHOP']
+api_key = ENV['API_TOKEN']
+api_version= ENV['API_VERSION']
+
+heads = {
+  'Content-Type' => 'application/json',
+  'X-shopify-Access-Token' => api_key
+}
+
+gql_endpoint = "https://#{shop}/admin/api/#{api_version}/graphql.json"
+
+connection = Faraday.new(url: gql_endpoint) do |faraday|
+  faraday.headers = heads
+  faraday.adapter Faraday.default_adapter
+end
+
+gql_body = <<~GQL
+  query {
+    shop {
+      id
+    }
+  }
+GQL
+
+res = connection.post do |req|
+  req.body = JSON.generate({ query: gql_body })
+end
+
+if res.success?
+  data = JSON.parse(res.body)
+  ap data
+else
+  puts "HTTP Error: #{res.status}"
+  puts res.body
+end
+
+binding.pry

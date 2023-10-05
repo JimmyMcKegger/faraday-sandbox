@@ -1,0 +1,9 @@
+
+# REST
+# res = Faraday.get(
+#   "https://#{shop}/admin/api/2023-07/shop.json",
+#   params = nil,
+#   headers = heads
+# )
+#
+# jres = JSON.parse res.body
