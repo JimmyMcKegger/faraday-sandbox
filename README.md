@@ -1,14 +1,7 @@
 
 # Faraday Sandbox
 
-A Ruby script using Faraday to make GraphQL requests to a Shopify store.
-
-## Prerequisites
-
-Before running this script, make sure you have the following:
-
-1. Ruby installed on your system.
-2. A Shopify store with a valid API token.
+A Ruby script using Faraday to make GraphQL requests.
 
 ## Setup
 
@@ -24,11 +17,11 @@ Before running this script, make sure you have the following:
    cd faraday-sandbox
    ```
 
-3. Create a `.env` file in the project directory and add your Shopify store URL and API token as follows:
+3. Create a `.env` file in the project directory and add your GraphQL URL and API token as follows:
 
    ```env
-   SHOP=my-shop.myshopify.com
-   API_TOKEN=shppa_1234sdf234234asdfasdf234234
+   URL=my-example-url.com
+   API_TOKEN=qwerty_1234sdf234234asdfasdf234234
    API_VERSION=2023-10
    ```
 
@@ -40,17 +33,17 @@ Before running this script, make sure you have the following:
 
 ## Usage
 
-To run the script and make GraphQL requests to your Shopify store, use the following command:
+To run the script and make GraphQL requests, use the following command:
 
 ```bash
 ruby req
 ```
 
-This script uses Faraday to send a GraphQL query to your Shopify store's GraphQL endpoint and prints the response using Awesome Print for better readability.
+This script uses Faraday to send a GraphQL query and prints the response using Awesome Print for better readability.
 
 ## Customization
 
-You can customize the GraphQL query by modifying the `gql_body` variable in the `req` script. Refer to the [Shopify GraphQL documentation](https://shopify.dev/docs/admin-api/graphql) for more information on available queries and mutations.
+You can customize the GraphQL query by modifying the `gql_body` variable in the `req` script.
 
 ## License
 

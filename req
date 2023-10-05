@@ -6,7 +6,7 @@ require 'faraday'
 require 'pry'
 require 'awesome_print'
 
-shop = ENV['SHOP']
+base = ENV['URL']
 api_key = ENV['API_TOKEN']
 api_version= ENV['API_VERSION']
 
@@ -15,7 +15,7 @@ heads = {
   'X-shopify-Access-Token' => api_key
 }
 
-gql_endpoint = "https://#{shop}/admin/api/#{api_version}/graphql.json"
+gql_endpoint = "https://#{base}/admin/api/#{api_version}/graphql.json"
 
 connection = Faraday.new(url: gql_endpoint) do |faraday|
   faraday.headers = heads
